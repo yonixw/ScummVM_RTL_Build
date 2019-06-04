@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  scmvm-apk-sdl:
+    build: android-sdl/
+    container_name: scmvm-apk-sdl
+    environment:
+      GIT_REPO: https://github.com/BLooperZ/scummvm
+      # Test it working with hash 106234b
+      # Remote branch start with origin:  origin/feature/scumm-rtl
+      GIT_HASH: 106234b
+      APK_DOMAIN: org.scummvm.scummvm
+      APK_TITLE: ScummVM
+      APK_ABI: armeabi-v7a arm64-v8a x86 x86_64
+      CONFIG_ARGS: --disable-all-engines --enable-engine=scumm,scumm-7-8
+    volumes:
+      - ./apk-output/:/etc/apk-output/
+#      # Custom key for build (may need password 'android')
+#      - debug.keystore:/root/.android/debug.keystore
