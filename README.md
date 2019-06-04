@@ -37,10 +37,6 @@ Currently this repo has no native way to compile on a Mac. **But**, you can use 
 
 ![](/images/mac_bs_sam.png)
 
-# Using Bluestack
+# Bluestacks
 
-## Config
-
-In both Windows and Mac you need to enable better graphics in the settings to avoid render problems in the game.
-
-## Copy files into the emulator
+If you plan to use the [Bluestacks emulator](https://www.bluestacks.com/) be sure to read how to configure the emulator in the [Bluestacks README](BLUESTACK.md)
