@@ -5,12 +5,12 @@ This git repo supposed to give helpful tools in order to compile the ScummVM eng
 
 ## Windows
 
-Windows uses [MinGW](http://www.mingw.org/) to compile the source. More instruction in the Windows [README](/Windows/README.md). 
+Windows uses [MinGW](http://www.mingw.org/) to compile the source. More instruction in the Windows [README](/Windows/). 
 
 ![Windows example](/images/win_ft_build.png)
 
 ## Linux
-Since you need to build C++ files and since each Linux distro have different packages, we only publish instruction to build from the git in the Linux [README](/Linux/README.md). 
+Since you need to build C++ files and since each Linux distro have different packages, we only publish instruction to build from the git in the Linux [README](/Linux/). 
 
 **Note:** Unfortunately, currently linux is not supported by the Bluestacks emulator.
 
@@ -18,7 +18,7 @@ Since you need to build C++ files and since each Linux distro have different pac
 
 
 ## Android
-Read about how to build the APK on linux in the android [README](/Android/README.md).
+Read about how to build the APK on linux in the android [README](/Android/).
 
 Since the android build uses the NDK to compile the C++ for android, and since NDK has different output for each instruction set (armeabi-v7a, arm64-v8a, x86, x86_64) in the same APK, there are different results on different devices.
 

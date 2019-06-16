@@ -5,6 +5,8 @@ Just follow all the instruction in [Compiling_ScummVM/GCC](https://wiki.scummvm.
 In order to run the build, you need to install some of the libs anyway (the libraries are dynamic and not static) and therefore there is no point in a docker architecture here.
 
 # How I did it on Ubuntu 19.04
+**Note:** The New Ubuntu needs the `libjpeg62-dev` package instead of the old `libjpeg62-turbo-dev` package
+
 ```bash
 # Install all the required packages:
 sudo apt-get update
