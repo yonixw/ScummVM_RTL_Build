@@ -2,8 +2,8 @@
 
 This docker container\files implements all the the steps described here: [Compiling ScummVM/Android-SDL](https://wiki.scummvm.org/index.php?title=Compiling_ScummVM/Android-SDL). This container was not build to run constantly like a build server. It comes with all the required packages installed and ready to be used. It comes with a sample python script that automatically clone a git repository and builds it (The default CMD). 
 
-# Docker url
-[yonixw/scummvm-android-sdl:v1](https://cloud.docker.com/u/yonixw/repository/docker/yonixw/scummvm-android-sdl)
+# Docker repo
+Pull from [yonixw/scummvm-android-sdl:v1](https://hub.docker.com/r/yonixw/scummvm-android-sdl)
 
 # Environment variables in this docker:
 
@@ -43,4 +43,6 @@ services:
       - ./:/etc/apk-output/
 ```
 
-just run `docker-compose up` and the entire process will start outputing an APK file to  the current folder `./`
+just run `docker-compose up` and the entire process will start outputing an APK file to  the current folder `./`. 
+
+You may need to enable *app installs from Unknown Sources* (google how to do it in your android version).
