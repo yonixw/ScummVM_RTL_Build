@@ -12,6 +12,7 @@ None.
 # Volumes:
 
 * Exe output: `C:\src\app\output`
+* Bash script to run in MinGW: `C:\src\app\build.sh`, default is [this file](https://github.com/yonixw/ScummVM_RTL_Build/blob/master/Windows/build.sh)
 
 # How to run?
 
