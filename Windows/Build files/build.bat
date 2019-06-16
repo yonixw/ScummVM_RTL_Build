@@ -1,0 +1,1 @@
+c:\src\app\mingw\msys\1.0\bin\sh.exe --login -i < build.sh
