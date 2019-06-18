@@ -1,0 +1,194 @@
+f = function (arr,callback) {
+    for (var i=0;i<arr.length;i++){
+        callback(arr[i])
+    }
+}
+
+
+
++ Sanatize tag.
++ Upload files 
+    + (nightly anyway, CRC maybe?)
+    + (Tag if not current tag)
+
+
+/c/Users/Yoni/Desktop/2019/scumv_build/scummvm
+
+./configure --disable-all-engines --enable-engine=scumm,scumm-7-8
+
+
+===================================================
+
+
+===================================================
+
+*) Install chrome, 7zip
+
+*) https://git-scm.com/download/win ---> git bash
+
+*) https://github.com/BLooperZ/scummvm/tree/feature/scumm-rtl
+
+*) git clone --single-branch --branch "feature/scumm-rtl" https://github.com/BLooperZ/scummvm
+
+*) On windows server open http://prdownloads.sourceforge.net/mingw/mingw-get-0.6.2-mingw32-beta-20131004-1-bin.tar.xz?download in internet explorer and allow domains (because extended security)
+
+*) mingw-get windows
+
+*) install mingw32-base, msys-base, msys-bash --> [MENU] --> Apply changes --> Apply
+
+    *) exit mingw-get GUI
+
+*) "C:\MinGW\msys\1.0\msys.bat"
+
+    *) copy&paste from : mingw_installed_packages.txt
+    
+    *) exit shell
+
+*) Add (Prebuilt libraries) to C:\MinGW\ folder and replace (not C:\MinGW\msys)
+
+*) Add SDL.dll to C:\MinGW\bin (replace if existing)
+
+*) "C:\MinGW\msys\1.0\msys.bat"
+
+    *) ./configure --disable-all-engines --enable-engine=scumm,scumm-7-8
+
+Check For:
+        Checking for Ogg... yes
+        Checking for Vorbis... yes
+        Checking for Tremor... no (Vorbis/Tremor support is mutually exclusive)
+        Checking for OPL2LPT... no
+        Checking for FLAC >= 1.0.1... yes
+        
+Also:
+        
+        Engines (builtin):
+            SCUMM [v0-v6 games] [v7 & v8 games]
+
+        Engines Skipped:
+            ...
+
+    *) make
+    ( there will be some warnings)
+
+    *) strip scummvm.exe
+    
+*) Add SDL.dll and libmingwex-0.dll to scummvm.exe and done!
+
+*) Open, click about and see there is feature Vorbis,Flac, Mp3 ...
+
+*) Change strings in scummvm\gui\about.cpp for quick verification
+    *) Make again 
+    (Should be very fast)
+    
+    
+====================== LINUX ============================
+====================== LINUX ============================
+====================== LINUX ============================
+====================== LINUX ============================
+
++ ubuntu 19.0464 x64
+
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git
+// one package missing will stop installing all
+sudo apt-get install g++ make libsdl2-dev liba52-dev libjpeg62-dev libmpeg2-4-dev libogg-dev libvorbis-dev libflac-dev libmad0-dev libpng-dev libtheora-dev libfaad-dev libfluidsynth-dev libfreetype6-dev zlib1g-dev 
+// (484 mb)
+sudo apt-get install libunity-dev
+git clone --single-branch --branch "feature/scumm-rtl" https://github.com/BLooperZ/scummvm
+cd scummvm
+./configure --disable-all-engines --enable-engine=scumm,scumm-7-8
+rm -rf
+make
+
+on client install:
+libsdl2-dev libmad0-dev libjpeg62-dev
+
+
+====================== ANDROID ============================
+====================== ANDROID ============================
+====================== ANDROID ============================
+====================== ANDROID ============================
+
+** install zip
+
+** build linux versioin
+sudo apt-get install openjdk-8-jdk
+wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+mkdir ~/.android
+mkdir ~/Android
+mkdir ~/Android/android-sdk
+sudo apt-get install unzip
+ unzip downloded/sdk-tools-linux-4333796.zip -d ./Android/android-sdk/
+ 
+touch ~/.android/repositories.cfg
+cd ~/Android/android-sdk/tools/bin
+./sdkmanager --install "platforms;android-26"
+./sdkmanager --install "build-tools;26.0.0"
+./sdkmanager --install "extras;android;m2repository"
+./sdkmanager --licenses
+
+
+#################You should see a printout that begins like the following:
+./sdkmanager --list
+
+Path                        | Version | Description                    | Location
+-------                     | ------- | -------                        | -------
+build-tools;26.0.0          | 26.0.0  | Android SDK Build-Tools 26.0.0 | build-tools/26.0.0/
+extras;android;m2repository | 47.0.0  | Android Support Repository     | extras/android/m2repository/
+platforms;android-26        | 2       | Android SDK Platform 26        | platforms/android-26/
+tools                       | 26.1.1  | Android SDK Tools 26.1.1       | tools/
+
+Download in folder:
+wget https://dl.google.com/android/repository/android-ndk-r15c-linux-x86_64.zip
+unzip android-ndk-r15c-linux-x86_64.zip -d ~/Android/
+
+nano ~/Android/setenv-android.sh
+```
+#!/bin/sh
+
+export ANDROID_HOME=~/Android/android-sdk
+export ANDROID_SDK_ROOT=~/Android/android-sdk
+export ANDROID_NDK_HOME=~/Android/android-ndk-r15c
+export ANDROID_SDK_TOOLS=$ANDROID_HOME/tools
+export ANDROID_SDK_BTOOLS=$ANDROID_HOME/build-tools/26.0.0
+export PATH=$ANDROID_NDK_HOME:$ANDROID_SDK_TOOLS:$ANDROID_SDK_BTOOLS:$PATH
+```
+
+To apply : 
+source ~/Android/setenv-android.sh
+echo Worked ? $ANDROID_SDK_BTOOLS
+
+
+Sample keystore:
+keytool -genkey -v -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000
+keytool -importkeystore -srckeystore ~/.android/debug.keystore -destkeystore ~/.android/debug.keystore -deststoretype pkcs12
+
+password: android
+
+
+Target architecture:
+~/scummvm/dists/androidsdl/scummvm/AndroidAppSettings.cfg
+
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 gcc-multilib
+
+
+try to compile 32bit with:  
+gcc -m32 -o m32test m32test.c
+
+
+git clone --single-branch --branch "feature/scumm-rtl" https://github.com/BLooperZ/scummvm
+nano scummvm/dists/androidsdl/scummvm/AndroidBuild.sh
+add 
+    --disable-all-engines --enable-engine=scumm,scumm-7-8 
+    after "/configure"
+
+cd scummvm/dists/androidsdl
+./build.sh
+
+androidsdl/project/jni/iconv/src/ and run ./build.sh there you should get a clue
+
+
